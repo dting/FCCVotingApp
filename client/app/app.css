@@ -106,11 +106,36 @@
   color: #96b5b4;
 }
 
-.navbar, .navbar-default .navbar-nav > li > a, .navbar .navbar-default, .navbar-default .navbar-brand {
+.navbar, .navbar-default .navbar-text, .navbar-default .navbar-nav > li > a, .navbar .navbar-default, .navbar-default .navbar-brand {
   color: #4f5b66;
   background: #96b5b4;
 }
 
 .navbar-default .navbar-nav > li > a:hover, .navbar .navbar-default:hover, .navbar-default .navbar-brand:hover {
   color: #343d46;
+  background: #8fa1b3;
+}
+
+#banner {
+  border-bottom: none;
+  margin-top: -20px;
+  margin-bottom: 20px;
+}
+
+#banner h1 {
+  font-size: 60px;
+  line-height: 1;
+  letter-spacing: -1px;
+}
+
+.hero-unit {
+  position: relative;
+  padding: 20px;
+  color: #F5F5F5;
+  text-align: center;
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
+  background: #2b303b;
+}
+h1, .h1, h2, .h2, h3, .h3 {
+  margin: 10px 0;
 }
