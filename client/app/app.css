@@ -40,6 +40,7 @@
 .text-red {
   color: #bf616a;
 }
+
 .red {
   background: #bf616a;
 }
@@ -98,4 +99,18 @@
 
 .brown {
   background: #ab7967;
+}
+
+.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:focus, .navbar-default .navbar-nav > .active > a:hover {
+  background: #4f5b66;
+  color: #96b5b4;
+}
+
+.navbar, .navbar-default .navbar-nav > li > a, .navbar .navbar-default, .navbar-default .navbar-brand {
+  color: #4f5b66;
+  background: #96b5b4;
+}
+
+.navbar-default .navbar-nav > li > a:hover, .navbar .navbar-default:hover, .navbar-default .navbar-brand:hover {
+  color: #343d46;
 }
