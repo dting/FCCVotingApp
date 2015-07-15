@@ -1,5 +1,6 @@
 @import 'bootstrap/less/bootstrap.less';
 @import 'font-awesome/less/font-awesome.less';
+@import 'base16.less';
 
 @icon-font-path: '/bower_components/bootstrap/fonts/';
 @fa-font-path: '/bower_components/font-awesome/fonts';
@@ -18,110 +19,115 @@
 // injector
 @import 'account/login/login.less';
 @import 'admin/admin.less';
+@import 'base16.less';
 @import 'main/main.less';
 @import 'modal/modal.less';
 // endinjector
 
 .text-red {
-  color: #bf616a;
+  color: @base08;
 }
 
 .red {
-  background: #bf616a;
+  background: @base08;
 }
 
 .text-orange {
-  color: #d08770;
+  color: @base09;
 }
 
 .text-orange {
-  background: #d08770;
+  background: @base09;
 }
 
 .text-yellow {
-  color: #ebcb8b;
+  color: @base0A;
 }
 
 .yellow {
-  background: #ebcb8b;
+  background: @base0A;
 }
 
 .text-green {
-  color: #a3be8c;
+  color: @base0B;
 }
 
 .green {
-  background: #a3be8c;
+  background: @base0B;
 }
 
 .text-light-blue {
-  color: #96b5b4;
+  color: @base0C;
 }
 
 .light-blue {
-  background: #96b5b4;
+  background: @base0C;
 }
 
 .text-blue {
-  color: #8fa1b3;
+  color: @base0D;
 }
 
 .blue {
-  background: #8fa1b3;
+  background: @base0D;
 }
 
 .text-purple {
-  color: #b48ead;
+  color: @base0E;
 }
 
 .purple {
-  background: #b48ead;
+  background: @base0E;
 }
 
 .text-brown {
-  color: #ab7967;
+  color: @base0F;
 }
 
 .brown {
-  background: #ab7967;
+  background: @base0F;
 }
 
 .navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:focus, .navbar-default .navbar-nav > .active > a:hover {
-  background: #4f5b66;
-  color: #96b5b4;
+  background: @base02;
+  color: @base0C;
 }
 
 .navbar, .navbar-default .navbar-text, .navbar-default .navbar-nav > li > a, .navbar .navbar-default, .navbar-default .navbar-brand {
-  color: #4f5b66;
-  background: #96b5b4;
+  color: @base02;
+  background: @base0C;
 }
 
 .navbar-default .navbar-nav > li > a:hover, .navbar .navbar-default:hover, .navbar-default .navbar-brand:hover {
-  color: #343d46;
-  background: #8fa1b3;
+  color: @base00;
+  background: @base0D;
 }
 
 #banner {
   border-bottom: none;
   margin-top: -20px;
   margin-bottom: 20px;
-}
-
-#banner h1 {
-  font-size: 60px;
   line-height: 1;
-  letter-spacing: -1px;
+  h1 {
+    letter-spacing: -1px;
+    margin: 10px 0;
+    font-size: 60px;
+  }
+  h2 {
+    letter-spacing: -1px;
+    margin: 10px 0;
+  }
 }
 
 .hero-unit {
   position: relative;
-  padding: 20px;
+  padding: 15px;
   color: #F5F5F5;
   text-align: center;
   text-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
   background: #2b303b;
 }
 
-h1, .h1, h2, .h2, h3, .h3 {
-  margin: 10px 0;
+body {
+  background: @base06;
 }
