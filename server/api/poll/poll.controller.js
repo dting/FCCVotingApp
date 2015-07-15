@@ -5,7 +5,7 @@ var Poll = require('./poll.model');
 
 // Get list of polls
 exports.index = function(req, res) {
-  Poll.find(function (err, polls) {
+  Poll.find({}).sort('-date').exec(function (err, polls) {
     if(err) { return handleError(res, err); }
     return res.json(200, polls);
   });

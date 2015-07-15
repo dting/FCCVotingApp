@@ -1,10 +1,10 @@
 'use strict';
 
-var mongoose = require('mongoose'),
-    Schema = mongoose.Schema;
+var mongoose = require('mongoose');
+var Schema = mongoose.Schema;
 
 var VoteSchema = new Schema({
-  voter_id: String
+  voter: {type: Schema.Types.ObjectId, ref: 'User'}
 });
 
 var ChoiceSchema = new Schema({
@@ -13,7 +13,7 @@ var ChoiceSchema = new Schema({
 });
 
 var PollSchema = new Schema({
-  creator: String,
+  creator: {type: Schema.Types.ObjectId, ref: 'User'},
   text: String,
   choices: [ChoiceSchema]
 });

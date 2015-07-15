@@ -26,73 +26,53 @@
 @import 'modal/modal.less';
 // endinjector
 
-.text-red {
-  color: @base08;
-}
+.text-base00 { color: @base00; }
 
-.red {
-  background: @base08;
-}
+.text-base01 { color: @base01; }
 
-.text-orange {
-  color: @base09;
-}
+.text-base02 { color: @base02; }
 
-.text-orange {
-  background: @base09;
-}
+.text-base03 { color: @base03; }
 
-.text-yellow {
-  color: @base0A;
-}
+.text-red { color: @base08; }
 
-.yellow {
-  background: @base0A;
-}
+.text-orange { color: @base09; }
 
-.text-green {
-  color: @base0B;
-}
+.text-yellow { color: @base0A; }
 
-.green {
-  background: @base0B;
-}
+.text-green { color: @base0B; }
 
-.text-light-blue {
-  color: @base0C;
-}
+.text-light-blue { color: @base0C; }
 
-.light-blue {
-  background: @base0C;
-}
+.text-blue { color: @base0D; }
 
-.text-blue {
-  color: @base0D;
-}
+.text-purple { color: @base0E; }
 
-.blue {
-  background: @base0D;
-}
+.text-brown { color: @base0F; }
 
-.text-purple {
-  color: @base0E;
-}
+.red { background: @base08; }
 
-.purple {
-  background: @base0E;
-}
+.orange { background: @base09; }
 
-.text-brown {
-  color: @base0F;
-}
+.yellow { background: @base0A; }
 
-.brown {
-  background: @base0F;
+.green { background: @base0B; }
+
+.light-blue { background: @base0C; }
+
+.blue { background: @base0D; }
+
+.purple { background: @base0E; }
+
+.brown { background: @base0F; }
+
+.navbar-default .navbar-brand {
+  letter-spacing: -1px;
 }
 
 .navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:focus, .navbar-default .navbar-nav > .active > a:hover {
-  background: @base02;
   color: @base0C;
+  background: @base02;
 }
 
 .navbar, .navbar-default .navbar-text, .navbar-default .navbar-nav > li > a, .navbar .navbar-default, .navbar-default .navbar-brand {
@@ -105,13 +85,16 @@
   background: @base0D;
 }
 
-#banner {
+.banner {
   border-bottom: none;
   margin-top: -20px;
   margin-bottom: 20px;
   line-height: 1;
+}
+
+.banner {
   h1 {
-    letter-spacing: -1px;
+    letter-spacing: -5px;
     margin: 10px 0;
     font-size: 60px;
   }
@@ -130,6 +113,4 @@
   background: #2b303b;
 }
 
-body {
-  background: @base06;
-}
+body { background: @base06; }

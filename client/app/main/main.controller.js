@@ -8,5 +8,6 @@ app.controller('MainCtrl', function($scope, $http, Auth) {
 
   $http.get('/api/polls').success(function(polls) {
     $scope.recentPolls = polls;
+    console.log(polls);
   });
 });
