@@ -3,10 +3,6 @@
 angular.module('workspaceApp')
   .controller('NavbarCtrl', function ($scope, $location, Auth) {
     $scope.menu = [{
-      'title': 'Home',
-      'link': '/',
-      'authReq': false
-    }, {
       'title': 'Dashboard',
       'link': '/dashboard',
       'authReq': true
