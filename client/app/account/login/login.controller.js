@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('workspaceApp')
-  .controller('LoginCtrl', function ($scope, Auth, $location, $window) {
+  .controller('LoginCtrl', function ($scope, Auth, $location, $window, $cookieStore) {
     $scope.user = {};
     $scope.errors = {};
 
@@ -14,8 +14,13 @@ angular.module('workspaceApp')
           password: $scope.user.password
         })
         .then( function() {
-          // Logged in, redirect to home
-          $location.path('/');
+          // Logged in, redirect to original url if exists else home
+          if (typeof $cookieStore.get('returnUrl') != 'undefined' && $cookieStore.get('returnUrl') != '') {
+            $location.path($cookieStore.get('returnUrl'));
+            $cookieStore.remove('returnUrl');
+          } else {
+            $location.path('/');
+          }
         })
         .catch( function(err) {
           $scope.errors.other = err.message;
