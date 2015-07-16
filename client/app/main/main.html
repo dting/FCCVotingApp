@@ -42,11 +42,18 @@
 <div class="container">
   <div class="row">
     <div ng-repeat="poll in recentPolls">
-      <div class="list-group"></div>
-      <h4 class="list-group-item blue text-base02">{{poll.text}}</h4>
-
-      <div class="list-group-item" ng-repeat="choice in poll.choices">
-        {{choice.text}} <span class="pull-right"><i class="fa fa-square-o"></i></span>
+      <div class="list-group">
+        <div class="list-group-item blue">
+          <h4 class="list-group-item-heading">{{poll.text}}</h4>
+          <p class="list-group-item-text">{{poll.creator_name}}</p>
+        </div>
+        <div class="list-group-item" ng-repeat="choice in poll.choices">
+          {{choice.text}}
+        <span class="pull-right">
+          <i class="fa fa-square-o" ng-if="poll.selected !== choice"></i>
+          <i class="fa fa-check-square-o text-green" ng-if="poll.selected === choice"></i>
+        </span>
+        </div>
       </div>
     </div>
   </div>

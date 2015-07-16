@@ -14,8 +14,9 @@ angular.module('workspaceApp').controller('DashboardCreateCtrl', function($scope
   };
   $scope.createPoll = function() {
     $scope.pending = true;
+    var user = Auth.getCurrentUser();
     var pollObj = {
-      text: $scope.poll.text, choices: $scope.poll.choices.slice(0), creator: Auth.getCurrentUser()._id
+      text: $scope.poll.text, choices: $scope.poll.choices.slice(0), creator: user._id, creator_name: user.name
     };
     $http.post('/api/polls', pollObj).success(function() {
       $state.go('dashboard.list');

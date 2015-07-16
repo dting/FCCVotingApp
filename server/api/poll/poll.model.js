@@ -13,6 +13,7 @@ var ChoiceSchema = new Schema({
 
 var PollSchema = new Schema({
   creator: {type: Schema.Types.ObjectId, ref: 'User'},
+  creator_name: String,
   text: String,
   choices: [ChoiceSchema],
   created_at: {type: Date, default: Date.now}
