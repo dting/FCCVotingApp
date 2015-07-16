@@ -25,25 +25,32 @@ User.find({}).remove(function() {
 
   Poll.find({}).remove(function() {
     Poll.create({
-      creator: seedUser, text: 'Which soft drink do you prefer?', choices: [{text: 'Coke'}, {text: 'Sprite'}]
+      creator: seedUser,
+      text: 'Which soft drink do you prefer?',
+      choices: [{text: 'Coke'}, {text: 'Sprite'}],
+      created_at: Date.now()
     }, {
       creator: seedUser,
       text: 'Who should I play in my flex spot?',
-      choices: [{text: "Le'Veon Bell"}, {text: "Demarco Murray"}, {text: 'Odell Beckham Jr.'}]
+      choices: [{text: "Le'Veon Bell"}, {text: "Demarco Murray"}, {text: 'Odell Beckham Jr.'}],
+      created_at: Date.now()
     }, {
       creator: seedUser,
       text: 'What movie should I see first?',
-      choices: [{text: 'Mad Max'}, {text: 'Terminator Genysis'}, {text: 'Inside Out'}, {text: 'Spy'}]
+      choices: [{text: 'Mad Max'}, {text: 'Terminator Genysis'}, {text: 'Inside Out'}, {text: 'Spy'}],
+      created_at: Date.now()
     }, {
       creator: testUser,
       text: 'Which phone should I buy?',
-      choices: [{text: 'Apple IPhone'}, {text: 'Samsung S6'}, {text: 'HTC Nexus'}]
+      choices: [{text: 'Apple IPhone'}, {text: 'Samsung S6'}, {text: 'HTC Nexus'}],
+      created_at: Date.now()
     }, {
       creator: testUser,
-      text: 'poll5',
-      choices: [{text: 'choice1'}, {text: 'choice2'}, {text: 'choice3'}, {text: 'choice4'}]
+      text: 'Which superhero would win in a fight?',
+      choices: [{text: 'Superman'}, {text: 'Batman'}, {text: 'Deadpool'}, {text: 'choice4'}],
+      created_at: Date.now()
     }, {
-      creator: adminUser, text: 'poll6', choices: [{text: 'choice1'}, {text: 'choice2'}]
+      creator: adminUser, text: 'Which programming language should I learn?', choices: [{text: 'Python'}, {text: 'Javascript'}], created_at: Date.now()
     });
   });
 });

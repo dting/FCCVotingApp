@@ -5,7 +5,15 @@ var Poll = require('./poll.model');
 
 // Get list of polls
 exports.index = function(req, res) {
-  Poll.find({}).sort('-date').exec(function (err, polls) {
+  Poll.find({}).sort('-created_at').limit(10).exec(function (err, polls) {
+    if(err) { return handleError(res, err); }
+    return res.json(200, polls);
+  });
+};
+
+// Get list of polls for user
+exports.userIndex = function(req, res) {
+  Poll.find({creator:req.params.id}).sort('-created_at').exec(function (err, polls) {
     if(err) { return handleError(res, err); }
     return res.json(200, polls);
   });

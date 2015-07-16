@@ -1,10 +1,11 @@
 'use strict';
 
 angular.module('workspaceApp')
-  .controller('NavbarCtrl', function ($scope, $location, Auth) {
+  .controller('NavbarCtrl', function ($scope, $location, Auth, $state) {
     $scope.menu = [{
       'title': 'Dashboard',
-      'link': '/dashboard',
+      'baseState': 'dashboard',
+      'state': 'dashboard.list',
       'authReq': true
     }];
 
@@ -21,4 +22,5 @@ angular.module('workspaceApp')
     $scope.isActive = function(route) {
       return route === $location.path();
     };
+    $scope.state = $state;
   });

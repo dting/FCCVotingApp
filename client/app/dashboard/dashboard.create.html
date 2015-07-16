@@ -1,0 +1,57 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+      <form class="form" name="form" ng-submit="createPoll(form)" novalidate>
+
+        <ng-form name="questionFieldForm">
+          <div class="form-group" ng-class="{'has-error': questionFieldForm.question.$invalid}">
+            <label class="label control-label text-base00" for="question">Question
+              <span class="pull-right help-block text-red" ng-show="questionFieldForm.question.$invalid">
+              Required
+            </span></label>
+            <input type="text" name="question" class="form-control" ng-model="poll.text" id="question" required>
+          </div>
+        </ng-form>
+
+        <div class="form-group"
+             ng-repeat="choice in poll.choices"
+             ng-class="{'has-error': choiceFieldForm.text.$invalid}">
+
+          <ng-form name="choiceFieldForm">
+            <label class="label control-label text-base00" for="choice{{$index}}">Choice {{$index+1}}
+              <span class="pull-right help-block text-red" ng-show="choiceFieldForm.text.$invalid">
+                Choices cannot be empty
+              </span>
+            </label>
+
+            <div class="input-group">
+              <input type="text" class="form-control" id="choice{{$index}}" name="text" ng-model="choice.text" required>
+              <span class="input-group-btn">
+                <button class="btn btn-danger red" ng-click="removeChoice($index)">
+                  <i class="fa fa-minus text-base00"></i>
+                </button>
+              </span>
+            </div>
+          </ng-form>
+        </div>
+
+        <div class="form-group has-error">
+          <p class="help-block text-red" ng-show="poll.choices.length < 2">
+            Polls require at least 2 choices
+          </p>
+
+          <p class="help-block">{{ errors.other }}</p>
+        </div>
+        <div>
+          <button class="btn btn-inverse btn-primary" type="submit"
+                  ng-disabled="form.$invalid || poll.choices.length < 2 || pending">
+            Create
+          </button>
+          <button class="btn btn-inverse btn-success" type="button" ng-click="addEmptyChoice()">
+            <i class="fa fa-plus"></i>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

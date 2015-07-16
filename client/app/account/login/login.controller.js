@@ -15,7 +15,7 @@ angular.module('workspaceApp')
         })
         .then( function() {
           // Logged in, redirect to original url if exists else home
-          if (typeof $cookieStore.get('returnUrl') != 'undefined' && $cookieStore.get('returnUrl') != '') {
+          if (typeof $cookieStore.get('returnUrl') !== 'undefined' && $cookieStore.get('returnUrl') !== '') {
             $location.path($cookieStore.get('returnUrl'));
             $cookieStore.remove('returnUrl');
           } else {

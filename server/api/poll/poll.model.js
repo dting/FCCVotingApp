@@ -8,14 +8,14 @@ var VoteSchema = new Schema({
 });
 
 var ChoiceSchema = new Schema({
-  text: String,
-  votes: [VoteSchema]
+  text: String, votes: [VoteSchema]
 });
 
 var PollSchema = new Schema({
   creator: {type: Schema.Types.ObjectId, ref: 'User'},
   text: String,
-  choices: [ChoiceSchema]
+  choices: [ChoiceSchema],
+  created_at: {type: Date, default: Date.now}
 });
 
 module.exports = mongoose.model('Poll', PollSchema);

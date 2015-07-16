@@ -6,10 +6,12 @@
     <div class="container">
       <div class="row">
         <div class="btn-group" role="group">
-          <button class="btn btn-success">New Poll</button>
-          <button class="btn btn-info">My Polls</button>
+          <button ui-sref=".list" class="btn btn-info" ng-class="{active: state.is('dashboard.list')}">My Polls</button>
+          <button ui-sref=".create" class="btn btn-success"  ng-class="{active: state.is('dashboard.create')}">New Poll</button>
         </div>
       </div>
     </div>
   </div>
 </header>
+
+<div ui-view></div>

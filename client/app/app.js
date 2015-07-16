@@ -47,10 +47,10 @@ angular.module('workspaceApp', [
       Auth.isLoggedInAsync(function(loggedIn) {
         if (next.authenticate && !loggedIn) {
           // store the requested url if not logged in
-          if ($location.url() != '/login') {
+          if ($location.url() !== '/login') {
             $cookieStore.put('returnUrl', $location.url());
           } else {
-            $cookieStore.delete('returnUrl');
+            $cookieStore.remove('returnUrl');
           }
           $location.path('/login');
         }
