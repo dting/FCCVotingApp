@@ -20,7 +20,7 @@
 
           <div class="form-control">
             {{choice.text}}
-            <span ng-if="poll.selected || poll.creator._id === currentUserid()"
+            <span ng-if="poll.selected || poll.creator._id === currentUserId()"
                   class="badge pull-right"
                   ng-class="{'green': poll.selected === choice._id}">
               {{choice.votes.length}}
@@ -31,11 +31,20 @@
     </form>
     <button type="button" class="btn" ng-click="vote(form)"
             ng-class="{'btn-success': !poll.selected, 'btn-info': poll.selected}"
-            ng-disabled="pending || poll.selected && poll.selected === vote.selected">
+            ng-disabled="pending || !vote.selected || poll.selected && poll.selected === vote.selected">
       {{ poll.selected ? 'Update Vote':'Cast Vote'}}
     </button>
     <span class="badge pull-right base03">Total: {{poll.totalVotes}}</span>
   </div>
 </div>
 
-<div ui-view="results"></div>
+<div class="container" ng-if="poll.selected">
+  <div class="row  well">
+    <div class="poll-list-header" ui-sref="poll({id:poll._id})">
+      <div class="panel-heading blue">
+        <h3 class="panel-title">Results</h3>
+      </div>
+      <highchart id="chart1" series="chartConfig.series" config="chartConfig"></highchart>
+    </div>
+  </div>
+</div>
