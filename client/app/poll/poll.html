@@ -46,5 +46,22 @@
       </div>
       <highchart id="chart1" config="chartConfig"></highchart>
     </div>
+    <div class="btn-group btn-group-justified" role="group" aria-label="chart types">
+      <div type="button" class="btn green"
+           ng-class="{active: chartConfig.options.chart.type === 'bar'}"
+           ng-click="chartType('bar')">
+        <i class="fa fa-bars"></i>
+      </div>
+      <div type="button" class="btn light-blue"
+           ng-class="{active: chartConfig.options.chart.type ==='column'}"
+           ng-click="chartType('column')">
+        <i class="fa fa-bars fa-rotate-90"></i>
+      </div>
+      <div type="button" class="btn purple"
+           ng-class="{active: chartConfig.options.chart.type === 'pie'}"
+           ng-click="chartType('pie')">
+        <i class="fa fa-pie-chart"></i>
+      </div>
+    </div>
   </div>
 </div>
