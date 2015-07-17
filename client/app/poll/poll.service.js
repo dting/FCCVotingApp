@@ -14,7 +14,7 @@ angular.module('workspaceApp').service('Poll', function(Auth, $modal, $resource)
   };
   this.delete = function(req, poll) {
     return $modal.open({
-      templateUrl: "app/poll/poll.delete.modal.html",
+      templateUrl: 'app/poll/poll.delete.modal.html',
       controller: ['$scope', '$state', function($scope, $state) {
         $scope.poll = poll;
         $scope.dismiss = function() {
@@ -28,6 +28,6 @@ angular.module('workspaceApp').service('Poll', function(Auth, $modal, $resource)
           });
         };
       }]
-    })
-  }
+    });
+  };
 });
