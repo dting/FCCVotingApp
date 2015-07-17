@@ -8,7 +8,7 @@
 
 <div class="container">
   <div class="row  well">
-    <div class="col-xs-12 text-center">
+    <div class="col-xs-12 text-center social">
       <span tweet="poll.text"></span>
     </div>
     <form name="form">
@@ -51,7 +51,7 @@
   </div>
 </div>
 
-<div class="container" ng-if="poll.selected">
+<div class="container" ng-show="poll.selected">
   <div class="row  well">
     <div class="poll-list-header" ui-sref="poll({id:poll._id})">
       <div class="panel-heading blue">
@@ -78,19 +78,28 @@
     </div>
   </div>
 </div>
+<div class="container text-center" ng-if="poll.selected && !show.comments">
+  <a class="fa-stack fa-lg fa-2x comment-btn" ng-click="show.comments=true">
+    <i class="fa fa-circle fa-stack-2x"></i>
+    <i class="fa fa-comment fa-stack-1x fa-inverse"></i>
+  </a>
+</div>
 
-<div class="container" ng-if="poll.selected">
-<div id="disqus_thread"></div>
-<script type="text/javascript">
-  /* * * CONFIGURATION VARIABLES * * */
-  var disqus_shortname = 'fccvotingapp';
+<div class="container" ng-if="poll.selected && show.comments">
+  <div id="disqus_thread"></div>
+  <script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'fccvotingapp';
 
-  /* * * DON'T EDIT BELOW THIS LINE * * */
-  (function() {
-    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-  })();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+      var dsq = document.createElement('script');
+      dsq.type = 'text/javascript';
+      dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments
+    powered by Disqus.</a></noscript>
 </div>

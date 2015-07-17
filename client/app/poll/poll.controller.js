@@ -107,4 +107,6 @@ angular.module('workspaceApp').controller('PollCtrl', function($scope, $statePar
     $scope.chartConfig.options.chart.type = type;
     $scope.chartConfig.series = chartSeries($scope.poll, type);
   };
+
+  $scope.show = {};
 });
