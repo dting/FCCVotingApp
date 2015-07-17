@@ -17,14 +17,4 @@ angular.module('workspaceApp')
         $scope.pending = false;
       });
     };
-    $scope.updateVote = function() {
-      $scope.pending = true;
-      Poll.vote({id:$scope.poll._id, choice:$scope.vote.selected}).$promise.then(function(res) {
-        $scope.poll = res;
-        $scope.pending = false;
-      }, function(err) {
-        $scope.errors = err;
-        $scope.pending = false;
-      });
-    };
   });
