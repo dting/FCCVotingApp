@@ -1,10 +1,12 @@
 'use strict';
 
 angular.module('workspaceApp')
-  .config(function ($stateProvider) {
+  .config(function ($stateProvider, $urlRouterProvider) {
+    $urlRouterProvider.when('/dashboard', '/dashboard/list');
     $stateProvider
       .state('dashboard', {
         url: '/dashboard',
+        abstract: true,
         templateUrl: 'app/dashboard/dashboard.html',
         controller: 'DashboardCtrl',
         authenticate: true

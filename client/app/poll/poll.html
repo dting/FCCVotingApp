@@ -13,16 +13,16 @@
         <div class="input-group" ng-class="{'has-success':poll.selected === choice._id}"
              ng-click="vote.selected = choice._id">
             <span class="input-group-addon">
-              <i class="fa fa-check-circle-o text-dark-green" ng-if="vote.selected ===  choice._id "></i>
-              <i class="fa fa-circle-o" ng-if="vote.selected !==  choice._id "></i>
+              <i class="fa fa-check-circle-o fa-lg text-dark-green" ng-if="vote.selected ===  choice._id "></i>
+              <i class="fa fa-circle-o fa-lg" ng-if="vote.selected !==  choice._id "></i>
               <input class="with-font" type="radio" name="choice" value="{{choice._id}}" ng-model="vote.selected">
             </span>
 
           <div class="form-control">
             {{choice.text}}
             <span ng-if="poll.selected || poll.creator._id === currentUserid()"
-                  class="label label-default pull-right"
-                  ng-class="{'label-success': poll.selected === choice._id}">
+                  class="badge pull-right"
+                  ng-class="{'green': poll.selected === choice._id}">
               {{choice.votes.length}}
             </span>
           </div>
@@ -34,6 +34,7 @@
             ng-disabled="pending || poll.selected && poll.selected === vote.selected">
       {{ poll.selected ? 'Update Vote':'Cast Vote'}}
     </button>
+    <span class="badge pull-right base03">Total: {{poll.totalVotes}}</span>
   </div>
 </div>
 
