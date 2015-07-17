@@ -49,6 +49,8 @@
 
 .text-brown { color: @base0F; }
 
+.base00 { background: @base00; }
+
 .base02 { background: @base02; }
 
 .base03 { background: @base03; }
@@ -56,6 +58,8 @@
 .base04 { background: @base04; }
 
 .base05 { background: @base05; }
+
+.base06 { background: @base06; }
 
 .red { background: @base08; }
 
@@ -122,14 +126,14 @@ a:hover.blue {
   padding: 15px;
   text-align: center;
   text-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
-  background: @base00;
+  .base00();
 }
 
 .no-bot-margin {
   margin-bottom: 0;
 }
 
-body { background: @base06; }
+body { .base06(); }
 
 input[type=radio].with-font {
   display: none;

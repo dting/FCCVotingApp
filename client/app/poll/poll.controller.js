@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('workspaceApp').controller('PollCtrl', function($scope, $stateParams, Poll, Auth) {
+angular.module('workspaceApp').controller('PollCtrl', function($scope, $stateParams, $state, Poll, Auth) {
 
   function chartSeries(poll, chartType) {
     if (chartType === 'bar' || chartType === 'column') {
@@ -46,6 +46,7 @@ angular.module('workspaceApp').controller('PollCtrl', function($scope, $statePar
       $scope.pending = false;
     });
   };
+
   $scope.unvote = function() {
     $scope.pending = true;
     $scope.vote.selected = '';
@@ -54,6 +55,14 @@ angular.module('workspaceApp').controller('PollCtrl', function($scope, $statePar
       $scope.pending = false;
     }, function(err) {
       $scope.errors = err;
+      $scope.pending = false;
+    });
+  };
+
+  $scope.delete = function() {
+    $scope.pending = true;
+    Poll.delete({id: $scope.poll._id}, $scope.poll).result.then(function() {
+    }, function() {
       $scope.pending = false;
     });
   };

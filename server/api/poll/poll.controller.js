@@ -102,12 +102,19 @@ exports.vote = function(req, res) {
 
 // Deletes a poll from the DB.
 exports.destroy = function(req, res) {
-  Poll.findById(req.params.id, function(err, poll) {
+  console.log(req);
+  Poll.findById(req.params.id).populate('creator').exec(function(err, poll) {
     if (err) {
       return handleError(res, err);
     }
     if (!poll) {
       return res.send(404);
+    }
+    // Only the creator of the poll can delete it.
+    console.log(poll.creator);
+    console.log(req.user);
+    if (poll.creator.id !== req.user.id) {
+      return res.send(403);
     }
     poll.remove(function(err) {
       if (err) {

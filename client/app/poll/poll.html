@@ -42,6 +42,11 @@
             ng-disabled="pending">
       Remove Vote
     </button>
+    <button type="button" class="btn btn-danger" ng-click="delete()"
+            ng-if="poll.creator._id === currentUserId()"
+            ng-disabled="pending">
+      Delete Poll
+    </button>
     <span class="badge pull-right base03">Total: {{poll.totalVotes}}</span>
   </div>
 </div>
