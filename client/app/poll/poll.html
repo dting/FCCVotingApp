@@ -8,6 +8,9 @@
 
 <div class="container">
   <div class="row  well">
+    <div class="col-xs-12 text-center">
+      <span tweet="poll.text"></span>
+    </div>
     <form name="form">
       <div class="form-group" ng-repeat="choice in poll.choices">
         <div class="input-group" ng-class="{'has-success':poll.selected === choice._id}"
@@ -29,10 +32,15 @@
         </div>
       </div>
     </form>
-    <button type="button" class="btn" ng-click="vote(form)"
+    <button type="button" class="btn" ng-click="vote()"
             ng-class="{'btn-success': !poll.selected, 'btn-info': poll.selected}"
             ng-disabled="pending || !vote.selected || poll.selected && poll.selected === vote.selected">
       {{ poll.selected ? 'Update Vote':'Cast Vote'}}
+    </button>
+    <button type="button" class="btn btn-warning" ng-click="unvote()"
+            ng-if="poll.selected"
+            ng-disabled="pending">
+      Remove Vote
     </button>
     <span class="badge pull-right base03">Total: {{poll.totalVotes}}</span>
   </div>

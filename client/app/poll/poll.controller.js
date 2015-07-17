@@ -10,7 +10,6 @@ angular.module('workspaceApp').controller('PollCtrl', function($scope, $statePar
       $scope.chartConfig.series = chartSeries($scope.poll, $scope.chartConfig.options.chart.type);
       $scope.chartConfig.title = {text: $scope.poll.text};
     }
-    ;
   });
 
   $scope.vote = function() {
@@ -19,6 +18,17 @@ angular.module('workspaceApp').controller('PollCtrl', function($scope, $statePar
       $scope.poll = res;
       $scope.chartConfig.series = chartSeries($scope.poll);
       $scope.chartConfig.title = {text: $scope.poll.text};
+      $scope.pending = false;
+    }, function(err) {
+      $scope.errors = err;
+      $scope.pending = false;
+    });
+  };
+  $scope.unvote = function() {
+    $scope.pending = true;
+    $scope.vote.selected = '';
+    Poll.vote({id: $scope.poll._id}).$promise.then(function(res) {
+      $scope.poll = res;
       $scope.pending = false;
     }, function(err) {
       $scope.errors = err;

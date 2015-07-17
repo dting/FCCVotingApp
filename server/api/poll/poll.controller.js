@@ -88,8 +88,10 @@ exports.vote = function(req, res) {
     if (currentVote) {
       currentVote.votes.pull(req.user.id);
     }
-    // Cast new vote.
-    _.find(poll.choices, {id: req.body.choice}).votes.push(req.user.id);
+    if (req.body.choice) {
+      // Cast new vote.
+      _.find(poll.choices, {id: req.body.choice}).votes.push(req.user.id);
+    }
     poll.save();
     poll = poll.toObject();
     poll.selected = req.body.choice;

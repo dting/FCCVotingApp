@@ -6,7 +6,8 @@ angular.module('workspaceApp', [
   'ngSanitize',
   'ui.router',
   'ui.bootstrap',
-  'highcharts-ng'
+  'highcharts-ng',
+  'angulike'
 ])
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
     $urlRouterProvider
