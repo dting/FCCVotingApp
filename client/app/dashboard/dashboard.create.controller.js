@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('workspaceApp').controller('DashboardCreateCtrl', function($scope, $http, Auth, $state) {
+angular.module('workspaceApp').controller('DashboardCreateCtrl', function($scope, Poll, Auth, $state) {
   $scope.errors = {};
   $scope.poll = {
     text: '', choices: [{}, {}]
@@ -15,12 +15,12 @@ angular.module('workspaceApp').controller('DashboardCreateCtrl', function($scope
   $scope.createPoll = function() {
     $scope.pending = true;
     var user = Auth.getCurrentUser();
-    var pollObj = {
-      text: $scope.poll.text, choices: $scope.poll.choices.slice(0), creator: user._id, creator_name: user.name
-    };
-    $http.post('/api/polls', pollObj).success(function() {
+    Poll.save({
+      text: $scope.poll.text, choices: $scope.poll.choices.slice(0), creator: user._id
+    }).$promise.then(function() {
+      console.log('saved');
       $state.go('dashboard.list');
-    }).error(function(err) {
+    }, function(err) {
       $scope.pending = false;
       $scope.errors = err;
     });

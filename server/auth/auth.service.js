@@ -15,12 +15,9 @@ var validateJwt = expressJwt({ secret: config.secrets.session });
  */
 function isAuthenticated() {
   return compose()
+    .use(normalizeToken)
     // Validate jwt
     .use(function(req, res, next) {
-      // allow access_token to be passed through query parameter as well
-      if(req.query && req.query.hasOwnProperty('access_token')) {
-        req.headers.authorization = 'Bearer ' + req.query.access_token;
-      }
       validateJwt(req, res, next);
     })
     // Attach user to request
@@ -33,6 +30,38 @@ function isAuthenticated() {
         next();
       });
     });
+}
+
+/**
+ * Attaches the user object to the request if authenticated
+ */
+function optionalAuth() {
+  return compose()
+    .use(normalizeToken)
+    // Validate jwt if available
+    .use(function (req, res, next) {
+      validateJwt(req, res, function () {
+        next();
+      });
+    })
+    // Attach user to request if logged in
+    .use(function (req, res, next) {
+      if (req.user && req.user._id) {
+        User.findById(req.user._id, function (err, user) {
+          if (user)  req.user = user;
+          next();
+        });
+      } else {
+        next()
+      }
+    })
+}
+
+function normalizeToken(req, res, next) {
+  if (req.query && req.query.hasOwnProperty('access_token')) {
+    req.headers.authorization = 'Bearer ' + req.query.access_token;
+  }
+  next();
 }
 
 /**
@@ -76,6 +105,7 @@ function setTokenCookie(req, res) {
 }
 
 exports.isAuthenticated = isAuthenticated;
+exports.optionalAuth = optionalAuth;
 exports.hasRole = hasRole;
 exports.signToken = signToken;
 exports.setTokenCookie = setTokenCookie;

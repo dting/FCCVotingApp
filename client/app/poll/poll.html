@@ -1,5 +1,40 @@
 <div ng-include="'components/navbar/navbar.html'"></div>
 
-<div class="col-sm-12 hero-unit banner">
-  <h2 class="text-green">{{text}}</h2>
+<div class="col-sm-12 hero-unit banner no-bot-margin">
+  <h2 class="text-green">{{poll.text}}</h2>
+
+  <p class="lead lead-name text-light-blue">{{poll.creator.name}}</p>
 </div>
+
+<div class="container">
+  <div class="row  well">
+    <form name="form">
+      <div class="form-group" ng-repeat="choice in poll.choices">
+        <div class="input-group" ng-class="{'has-success':poll.selected === choice._id}"
+             ng-click="vote.selected = choice._id">
+            <span class="input-group-addon">
+              <i class="fa fa-check-circle-o text-dark-green" ng-if="vote.selected ===  choice._id "></i>
+              <i class="fa fa-circle-o" ng-if="vote.selected !==  choice._id "></i>
+              <input class="with-font" type="radio" name="choice" value="{{choice._id}}" ng-model="vote.selected">
+            </span>
+
+          <div class="form-control">
+            {{choice.text}}
+            <span ng-if="poll.selected || poll.creator._id === currentUserid()"
+                  class="label label-default pull-right"
+                  ng-class="{'label-success': poll.selected === choice._id}">
+              {{choice.votes.length}}
+            </span>
+          </div>
+        </div>
+      </div>
+    </form>
+    <button type="button" class="btn" ng-click="vote(form)"
+            ng-class="{'btn-success': !poll.selected, 'btn-info': poll.selected}"
+            ng-disabled="pending || poll.selected && poll.selected === vote.selected">
+      {{ poll.selected ? 'Update Vote':'Cast Vote'}}
+    </button>
+  </div>
+</div>
+
+<div ui-view="results"></div>

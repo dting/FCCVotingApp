@@ -1,6 +1,21 @@
+@import '../base16.less';
+
 span.pull-right.help-block.text-red {
   margin-bottom: 0;
   font-style: italic;
   font-weight: 400;
 }
 
+a.poll-list-header, a:hover.poll-list-header {
+  color: inherit;
+  text-decoration: inherit;
+  word-wrap: break-word;
+}
+
+a:hover.poll-list-header {
+  background: darken(@base0D, 10%);
+}
+
+.poll-list-item {
+  word-wrap: break-word;
+}

@@ -1,6 +1,5 @@
 @import 'bootstrap/less/bootstrap.less';
 @import 'font-awesome/less/font-awesome.less';
-@import 'base16.less';
 
 @icon-font-path: '/bower_components/bootstrap/fonts/';
 @fa-font-path: '/bower_components/font-awesome/fonts';
@@ -50,6 +49,14 @@
 
 .text-brown { color: @base0F; }
 
+.base02 { background: @base02; }
+
+.base03 { background: @base03; }
+
+.base04 { background: @base04; }
+
+.base05 { background: @base05; }
+
 .red { background: @base08; }
 
 .orange { background: @base09; }
@@ -62,10 +69,13 @@
 
 .blue { background: @base0D; }
 
+a:hover.blue {
+  background: darken(@base0D, 10%);
+}
+
 .purple { background: @base0E; }
 
 .brown { background: @base0F; }
-
 
 .navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:focus, .navbar-default .navbar-nav > .active > a:hover {
   color: @base0C;
@@ -83,6 +93,7 @@
 }
 
 .banner {
+  word-wrap: break-word;
   border-bottom: none;
   margin-top: -20px;
   margin-bottom: 20px;
@@ -99,6 +110,9 @@
     letter-spacing: -1px;
     margin: 10px 0;
   }
+  .lead-name {
+    margin-bottom: 0;
+  }
 }
 
 .navbar-default .navbar-brand { letter-spacing: -1px; }
@@ -111,4 +125,12 @@
   background: @base00;
 }
 
+.no-bot-margin {
+  margin-bottom: 0;
+}
+
 body { background: @base06; }
+
+input[type=radio].with-font {
+  display: none;
+}
