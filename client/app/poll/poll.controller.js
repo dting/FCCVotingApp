@@ -1,6 +1,28 @@
 'use strict';
 
 angular.module('workspaceApp').controller('PollCtrl', function($scope, $stateParams, Poll, Auth) {
+
+  function chartSeries(poll, chartType) {
+    if (chartType === 'bar' || chartType === 'column') {
+      return barColSeries(poll);
+    } else {
+      return pieSeries(poll);
+    }
+  }
+
+  function barColSeries(poll) {
+    return _.map(poll.choices, function(choice) {
+      return {name: choice.text, data: [choice.votes.length]};
+    });
+  }
+
+  function pieSeries(poll) {
+    var data = _.map(poll.choices, function(choice) {
+      return {name: choice.text, y: choice.votes.length};
+    });
+    return [{name: 'Votes', data: data, colorByPoint: true}];
+  }
+
   $scope.vote = {};
 
   Poll.get({id: $stateParams.id}).$promise.then(function(r) {
@@ -49,23 +71,15 @@ angular.module('workspaceApp').controller('PollCtrl', function($scope, $statePar
       plotOptions: {
         pie: {
           allowPointSelect: true, cursor: 'pointer', dataLabels: {
-            enabled: true, format: '<b>{point.name}</b>:<br>{point.y} ({point.percentage:.1f} %)', style: {
-              color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
-            }
+            enabled: true, format: '<b>{point.name}</b>:<br>{point.y} ({point.percentage:.1f} %)'
           }, showInLegend: true
-        },
-        bar: {
+        }, bar: {
           dataLabels: {
-            enabled: true, format: '<b>{series.name}</b>: {point.y}', style: {
-              color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
-            }
+            enabled: true, format: '<b>{series.name}</b>: {point.y}'
           }, showInLegend: true
-        },
-        column: {
+        }, column: {
           dataLabels: {
-            enabled: true, format: '<b>{series.name}</b>: {point.y}', style: {
-              color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
-            }
+            enabled: true, format: '<b>{series.name}</b>: {point.y}'
           }, showInLegend: true
         }
       }
@@ -83,26 +97,5 @@ angular.module('workspaceApp').controller('PollCtrl', function($scope, $statePar
   $scope.chartType = function(type) {
     $scope.chartConfig.options.chart.type = type;
     $scope.chartConfig.series = chartSeries($scope.poll, type);
-  }
+  };
 });
-
-function chartSeries(poll, chartType) {
-  if (chartType === 'bar' || chartType === 'column') {
-    return barColSeries(poll);
-  } else {
-    return pieSeries(poll);
-  }
-}
-
-function barColSeries(poll) {
-  return _.map(poll.choices, function(choice) {
-    return {name: choice.text, data: [choice.votes.length]};
-  });
-}
-
-function pieSeries(poll) {
-  var data = _.map(poll.choices, function(choice) {
-    return {name: choice.text, y: choice.votes.length};
-  });
-  return [{name: 'Votes', data: data, colorByPoint: true}];
-}
